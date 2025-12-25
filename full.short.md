@@ -1,7 +1,3 @@
-Here is a revised and expanded version of the philosophical paper, with particular attention to strengthening the endless chase argument and improving the overall narrative flow for _Philosophia Mathematica_:
-
----
-
 # \*\*A Computational Framework for Prime Numbers:
 
 How Ontological Reframing Reorganizes Mathematical Reasoning\*\*
@@ -336,7 +332,3 @@ The broader lesson is that mathematical progress may involve not only new theore
 - Rosser, J. B., & Schoenfeld, L. (1962). _Approximate formulas for some functions of prime numbers_. Illinois Journal of Mathematics.
 - Selberg, A. (1947). _On an elementary method in the theory of primes_. Norsk Matematisk Tidsskrift.
 - Shapiro, S. (1997). _Philosophy of Mathematics: Structure and Ontology_. Oxford University Press.
-
----
-
-This revised version strengthens the endless chase argument with an unconditional, elementary proof, clarifies the philosophical narrative, and maintains a fluid, coherent structure suitable for _Philosophia Mathematica_.

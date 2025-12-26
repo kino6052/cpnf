@@ -157,17 +157,28 @@ Therefore, within CPNF, given the assumptions, the twin certification process ca
 
 ### 5.1 Circumventing the Parity Problem
 
-The parity problem—the inability of classical sieve methods to distinguish numbers with an odd versus even number of prime factors—is a major obstacle in analytic number theory. It arises when sieves are used as _density estimators_.
+The parity problem—the inability of sieve methods to distinguish numbers with an even versus odd number of prime factors—does not apply within CPNF. This is not because CPNF has solved it, but because CPNF operates with different ontological commitments.
 
-In CPNF, we do not estimate densities. We ask a yes/no question: Does the certification window contain at least one survivor? This is a _membership problem_ in a fixed union of arithmetic progressions, solvable by elementary growth-rate comparisons once the modulus is fixed. The parity problem simply does not apply.
+- **Classical Sieve Theory**: Must distinguish between numbers with exactly one prime factor (primes) and those with more. This is fundamentally a **counting/density problem**.
+- **CPNF Process**: Makes no claim about "real primes" in the classical sense. It certifies **stage-relative survivors**—numbers that survive division by the current blocker set \(B_k\) and fall within the certification window.
 
-### 5.2 From Completed Infinity to Process
+The key distinction:
 
-Classical number theory often treats primes as a completed infinite set. CPNF treats them as the ongoing output of a procedure. This shift replaces questions about cardinality with questions about termination, enabling finite, combinatorial reasoning where classical arguments might require analytic asymptotics.
+| Aspect               | Classical Number Theory                    | CPNF                                                                        |
+| -------------------- | ------------------------------------------ | --------------------------------------------------------------------------- |
+| **What is a prime?** | An integer >1 with exactly two divisors    | A number certified at stage \(k\) as surviving \(B_k\)                      |
+| **Goal**             | Count/distribute true primes               | Continue certification process indefinitely                                 |
+| **Parity relevance** | Fundamental obstacle to density estimation | Irrelevant—we never claim certified numbers are "primes" in classical sense |
 
-### 5.3 Ontological Transparency
+**Why parity doesn't apply:**
 
-CPNF makes its ontological commitments explicit: primes are what the process certifies. This clarity allows us to see exactly which assumptions are in play and how they influence the form of the argument.
+1. **No absolute primality claims**: CPNF certifications are explicitly stage-relative. A number certified at stage \(k\) might later be discovered to have factors > max(\(B_k\)), but this doesn't invalidate the certification.
+2. **Process over properties**: CPNF studies the behavior of a certification machine, not the properties of integers.
+3. **Different success criteria**: Success in CPNF means the process never terminates or stagnates permanently. It doesn't mean we've identified "all true twin primes."
+
+The parity problem is a symptom of trying to use **sieves as measuring tools** for completed infinite sets. CPNF uses sieves as **construction tools** for an ongoing process. When you change from "How many?" to "Will the machine stop?", the parity barrier disappears because it was never about parity—it was about the mismatch between the tool (sieve) and the task (counting exact primes).
+
+Thus, within CPNF's ontology, the parity problem is not circumvented but rendered irrelevant—a philosophical clarification, not a mathematical breakthrough.
 
 ---
 
@@ -175,15 +186,13 @@ CPNF makes its ontological commitments explicit: primes are what the process cer
 
 The CPNF case study illustrates how ontological choices can reshape mathematical practice. By adopting a process-oriented ontology, we gain access to proof strategies that are structurally simpler and that avoid certain classical obstacles.
 
-This does not mean that CPNF "solves" hard problems in classical number thoery, rather it means that these hard problems can be reformulated in a framework where it becomes tractable via elementary means. This suggests that the difficulty of a problem may depend not only on the mathematical facts themselves, but also on the framework through which we approach them.
+This does not mean that CPNF "solves" hard problems in classical number thoery, rather it means that these hard problems can be reformulated in a framework that allows to simplify reasoning. This suggests that the difficulty of a problem may depend not only on the mathematical facts themselves, but also on the framework through which we approach them.
 
 Several questions for further philosophical investigation arise:
 
 - To what extent are other open problems in mathematics similarly sensitive to ontological framing?
 - How might process-oriented ontologies be applied in other domains of mathematics?
 - What are the limits of such reformulations? When is a shift in ontology genuinely explanatory, and when is it merely a relabeling?
-
-CPNF serves as a philosophically instructive example: it demonstrates that how we conceptualize mathematical objects can change what counts as a proof, what tools are appropriate, and what results seem attainable.
 
 ---
 
@@ -417,4 +426,4 @@ The CPNF framework could be extended to:
 
 1. Can CPNF be formalized in constructive type theory?
 2. What other mathematical domains might benefit from similar ontological reframing?
-3. How does CPNF relate to other constructive approaches in number theory?
+3. How this case study relate to other constructive approaches in number theory?

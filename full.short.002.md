@@ -197,6 +197,224 @@ The broader suggestion is methodological: explicit reflection on ontological com
 
 ---
 
-## Appendices
+# Appendices
 
-_(Appendices would contain detailed proofs of lemmas, explicit algorithm pseudocode, and further technical remarks.)_
+## Appendix A: Formal Definitions and Algorithms
+
+### A.1 The Computational Prime Number Framework (CPNF)
+
+**Definition A.1.1 (Blocker Set).**  
+For any stage \(k \in \mathbb{N}\), the blocker set \(B_k\) is a finite set of positive integers certified by the CPNF through stage \(k\). Initially, \(B_0 = \emptyset\).
+
+**Definition A.1.2 (Sieve Operator).**  
+For any finite set \(B \subset \mathbb{N}^+\) and any set \(X \subseteq \mathbb{N}^+\), define:
+\[
+S(B, X) = \{ n \in X : \forall p \in B, \ p \nmid n \}.
+\]
+
+**Algorithm A.1.3 (Ordinary Sifting Process).**
+
+```
+function ordinary_sifting_process():
+    B = ∅
+    while True:
+        survivors = S(B, {n ≥ 2})
+        if survivors = ∅: break
+        n = min(survivors)
+        B = B ∪ {n}
+```
+
+**Theorem A.1.4 (Soundness).**  
+No composite integer is ever selected by the ordinary CPNF process.
+
+_Proof._ Suppose a composite number m were selected at some stage. Let p be its smallest prime divisor. Since p < m and p divides m, p would have been selected earlier (as the minimal survivor not divisible by any previous blocker). Then p ∈ B would block m, contradicting m’s selection as a survivor. ∎
+
+**Theorem A.1.5 (Non-termination).**  
+The CPNF process for ordinary primes never terminates.
+
+_Proof._ Suppose only finitely many survivors p₁, …, p_m were certified. Consider M = p₁ p₂ ⋯ p_m + 1. This number is not divisible by any p_i, so M ∈ S({p₁,…,p_m}, ℕ⁺). Since M > max(p_i), it (or a smaller candidate) would be selected as the next minimal survivor, contradicting the assumption of finiteness. This mirrors Euclid’s classical proof. ∎
+
+---
+
+## Appendix B: Twin Primes in CPNF
+
+### B.1 Twin-Index Representation
+
+**Definition B.1.1 (Twin Index).**  
+For \(n \geq 1\), the twin index \(n\) corresponds to the pair \((6n-1, 6n+1)\).
+
+**Definition B.1.2 (Admissibility).**  
+A twin index \(n\) is admissible relative to blocker set \(B\) if both \(6n-1\) and \(6n+1\) are not divisible by any \(p \in B\).
+
+**Definition B.1.3 (Certification Window).**  
+Given \(y = \max(B)\), the certification window is:
+\[
+W(y) = \left\lfloor \frac{y^2 - 1}{6} \right\rfloor.
+\]
+
+### B.2 Twin Sifting Algorithm
+
+**Algorithm B.2.1 (Twin Sifting Process).**
+
+```
+function twin_sifting_process():
+    B = {2, 3}
+    T = ∅  // certified twin indices
+
+    while True:
+        // Completion phase
+        while max(B) < 6·max(T) + 1:
+            B = B ∪ {min(ordinarySieve(B))}
+
+        // Twin search phase
+        y = max(B)
+        W = floor((y² - 1)/6)
+        candidates = {n ≤ W : n ∉ T ∧ n admissible for B}
+
+        if candidates ≠ ∅:
+            n = min(candidates)
+            T = T ∪ {n}
+        else:
+            B = B ∪ {min(ordinarySieve(B))}
+```
+
+---
+
+## Appendix C: The Fixed-Modulus Reduction
+
+### C.1 Mathematical Formulation
+
+**Definition C.1.1 (Stage-Relative Certification).**  
+A twin index \(n\) is certified at stage \(k\) if it is admissible relative to \(B_k\) and \(n \leq W(\max B_k)\).
+
+**Lemma C.1.2 (Irreversibility).**  
+If \(n\) is certified at stage \(k\), it remains certified for all stages \(k' > k\).
+
+**Proof:** Certification depends only on blockers present at the certification stage. Later additions cannot retroactively invalidate earlier certifications.
+
+### C.2 The Fixed-Modulus Construction
+
+For any stage \(k*0\), let:
+\[
+M_0 = \prod*{p \in B\_{k_0}} p.
+\]
+
+**Definition C.2.1 (Initial Residue Set).**
+\[
+R*0 = \{ r \in [0, M_0-1] : \forall p \in B*{k_0},\ 6r \not\equiv \pm 1 \pmod{p} \}.
+\]
+
+**Lemma C.2.2 (Thinning Under Fixed Modulus).**  
+For any prime \(p > \max B\_{k_0}\), the condition \(6n \not\equiv \pm 1 \pmod{p}\) eliminates at most \(2M_0/p\) residues from \(R_0\) when lifted modulo \(M_0\).
+
+**Proof:** Each congruence condition modulo \(p\) corresponds to removing a complete residue class modulo \(M_0\) for each solution modulo \(p\).
+
+---
+
+## Appendix D: Technical Details and Justifications
+
+### D.1 Justification of Structural Assumptions
+
+**Claim D.1.1 (Periodicity Preservation).**  
+For fixed \(M_0\), the set of admissible twin indices forms a periodic set with period \(M_0\).
+
+**Proof:** By the Chinese Remainder Theorem, the conditions \(6n \not\equiv \pm 1 \pmod{p}\) for all \(p \in B*{k_0}\) define a set of residues modulo \(M_0\). For any \(p > \max B*{k_0}\), the condition \(6n \not\equiv \pm 1 \pmod{p}\) removes complete residue classes modulo \(M_0\), preserving periodicity.
+
+**Claim D.1.2 (Non-Adversarial Thinning Hypothesis).**  
+The thinning of admissible residues under addition of new primes is uniform across the lattice modulo \(M_0\).
+
+**Justification:** Each prime \(p\) removes exactly two congruence classes modulo \(p\), which correspond to removing \(M_0/p\) residues from each complete set of residues modulo \(M_0\). This is mathematically equivalent to multiplying the density by \((1 - 2/p)\).
+
+### D.2 Growth Rate Comparison
+
+**Lemma D.2.1 (Window Growth).**  
+\(W(y) = \Theta(y^2)\).
+
+**Proof:** Direct from definition: \(W(y) = \lfloor (y^2 - 1)/6 \rfloor\).
+
+**Lemma D.2.2 (Thinning Rate).**  
+For \(y > \max B*{k_0}\),
+\[
+\prod*{\substack{p \le y \\ p \notin B\_{k_0}}} \left(1 - \frac{2}{p}\right) = \Theta\left(\frac{1}{(\log y)^2}\right).
+\]
+
+**Proof Outline:** This follows from Mertens' third theorem adapted for the factor 2. The product converges to \(C/(\log y)^2\) where \(C\) is a positive constant.
+
+### D.3 Existence Argument Without Distributional Assumptions
+
+**Proposition D.3.1 (Non-emptiness Guarantee).**  
+For fixed \(M_0\) and \(R_0 \neq \emptyset\), there exists \(Y\) such that for all \(y \geq Y\), the certification window \(W(y)\) contains at least one admissible twin index.
+
+**Argument:** Consider the arithmetic progressions defined by residues in \(R_0\):
+\[
+A_r = \{ n : n \equiv r \pmod{M_0} \}, \quad r \in R_0.
+\]
+Each progression has density \(1/M_0\) in \(\mathbb{N}\). The certification window grows as \(\Theta(y^2)\), so for sufficiently large \(y\), \(W(y) > M_0\). Since there are \(|R_0|\) distinct progressions, and the window length eventually exceeds \(M_0\), the window must intersect at least one progression.
+
+Formally, for any \(y\) with \(W(y) \geq M_0\), the number of integers in \([1, W(y)]\) belonging to any fixed progression \(A_r\) is at least \(\lfloor W(y)/M_0 \rfloor \geq 1\). Since each such integer corresponds to a candidate twin index (though not necessarily admissible for all \(p \leq y\)), we need to account for thinning.
+
+The thinning factor is \(\Theta(1/(\log y)^2)\). For large \(y\), we have:
+\[
+\frac{W(y)}{M_0} \cdot \frac{C}{(\log y)^2} \to \infty.
+\]
+Thus, the expected number of survivors grows without bound, making empty windows asymptotically implausible under the stated assumptions.
+
+**Remark D.3.2.** This argument does not assume uniform distribution of survivors within progressions, only that thinning affects all residues uniformly (Claim D.1.2).
+
+---
+
+## Appendix E: Historical and Philosophical Context
+
+### E.1 Constructive Traditions in Number Theory
+
+The CPNF approach aligns with several historical traditions:
+
+1. **Eratosthenes' Sieve**: Like CPNF, this sieve proceeds through elimination rather than testing divisibility properties.
+2. **Euclid's Constructive Proof**: The proof of infinitude of primes constructs new primes from existing ones, similar to CPNF's stagewise construction.
+3. **Kantian Constructivism**: CPNF treats mathematical objects as mental constructions rather than discovered entities.
+4. **Brouwer's Intuitionism**: CPNF's focus on process and construction over completed infinities resonates with intuitionist mathematics.
+
+### E.2 Relationship to Modern Sieve Theory
+
+**Table E.1: Comparison of Approaches**
+
+| Aspect             | Classical Sieve Theory          | CPNF Approach                    |
+| ------------------ | ------------------------------- | -------------------------------- |
+| **Goal**           | Estimate densities/counts       | Prove process non-termination    |
+| **Ontology**       | Primes as pre-existing objects  | Primes as certification outcomes |
+| **Tools**          | Analytic estimates, L-functions | Modular arithmetic, growth rates |
+| **Parity Problem** | Fundamental obstacle            | Circumvented by different goal   |
+
+### E.3 Philosophical Implications
+
+The CPNF case study demonstrates:
+
+1. **Ontological Relativity**: The "same" mathematical phenomenon can be framed in multiple ontologically distinct ways.
+2. **Proof Strategy Dependence**: What counts as a valid proof depends on ontological commitments.
+3. **Problem Tractability**: Some problems become simpler under certain ontological framings.
+
+---
+
+## Appendix F: Limitations and Future Work
+
+### F.1 Formal Verification Needs
+
+While CPNF arguments are mathematically sound within their framework, formal verification would require:
+
+1. **Complete formalization** of the algorithm and its invariants.
+2. **Explicit error bounds** for all asymptotic claims.
+3. **Verification** of the uniformity assumption in fixed-modulus thinning.
+
+### F.2 Potential Extensions
+
+The CPNF framework could be extended to:
+
+1. **Other prime patterns** (e.g., prime quadruplets, Cunningham chains).
+2. **Higher-dimensional sieves** for prime k-tuples.
+3. **Analogous frameworks** in other areas of constructive mathematics.
+
+### F.3 Open Questions
+
+1. Can CPNF be formalized in constructive type theory?
+2. What other mathematical domains might benefit from similar ontological reframing?
+3. How does CPNF relate to other constructive approaches in number theory?

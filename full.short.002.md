@@ -1,4 +1,4 @@
-# A Computational Framework for Prime Numbers: A Case Study in Mathematical Ontology and Process-Oriented Reasoning
+# A Computational Framework for Prime Numbers: A Case Study on How Reification and Ontology Affects Prime Infinitude Arguments
 
 **Author:** Anonymous  
 **Date:**
@@ -11,9 +11,9 @@ _Dedicated to Li Juan, another mystery yet to be solved._
 
 ## Abstract
 
-This paper explores how ontological commitments in mathematics can shape proof strategies and perceived tractability. We introduce the **Computational Prime Number Framework (CPNF)**, a formal model in which primality is treated not as an inherent property but as the outcome of a stagewise certification process. Using CPNF as a case study, we examine how shifting from a "completed-object" to a "process-oriented" ontology reframes questions of infinitude. Within this framework, we demonstrate that the twin-prime certification process cannot remain permanently stagnant—i.e., it cannot reach a state after which no new certifications ever occur. This result is established using elementary modular arithmetic and a fixed-modulus reduction, without relying on unproven distributional assumptions. The paper does not claim to resolve classical conjectures, but rather illustrates how ontological reframing can alter the landscape of mathematical reasoning.
+This paper examines how _reification_—the treatment of mathematical processes as completed objects—can introduce unnecessary obstacles into mathematical reasoning. We introduce the **Computational Prime Number Framework (CPNF)**, a formal model in which primality is treated not as an inherent property of integers but as the outcome of a stagewise certification process. Using CPNF as a case study, we show how shifting from a reified ontology of “completed primes” to a process-oriented ontology reframes questions of infinitude and pattern recurrence. Within this framework, we demonstrate that the twin-prime certification process cannot remain permanently stagnant—i.e., it cannot reach a state after which no new certifications ever occur. This result relies on elementary modular arithmetic and a fixed-modulus reduction that becomes natural within CPNF’s stage-relative semantics. The paper does not claim to resolve classical conjectures, but rather illustrates how ontological reframing can alter the landscape of mathematical reasoning, revealing how reification may heighten perceived difficulty.
 
-**Keywords:** Philosophy of mathematics, computational number theory, prime numbers, sieve theory, ontology, constructive mathematics
+**Keywords:** Philosophy of mathematics, reification, computational number theory, prime numbers, ontology, constructive mathematics, process philosophy
 
 ---
 
@@ -23,42 +23,42 @@ This paper presents a conceptual case study within a formally defined framework.
 
 ## Methodological Note
 
-The paper is primarily philosophical in aim: it investigates how different conceptions of mathematical objects influence proof design and perceived difficulty. CPNF is offered as an explicit, self-contained model in which certain classical obstacles (e.g., the parity problem) do not arise. The mathematical development is intended to illustrate the philosophical point, not to serve as a complete formal proof in classical number theory.
+The paper is primarily philosophical in aim: it investigates how reification—the conversion of dynamic processes into static objects—influences proof design and perceived difficulty. CPNF is offered as an explicit, self-contained model in which certain classical obstacles (e.g., the parity problem) do not arise because they are artifacts of reification. The mathematical development is intended to illustrate the philosophical point, not to serve as a complete formal proof in classical number theory.
 
 ---
 
 ## Table of Contents
 
-1. Introduction
+1. Introduction: The Problem of Reification in Mathematics
 2. CPNF: A Process-Oriented Ontology for Primality
 3. Extending CPNF to Twin-Prime Patterns
-4. The Endless Chase and Its Resolution via Fixed-Modulus Reduction
-5. Why This Shift Matters: Ontology and Proof Strategy
+4. The Endless Chase and Fixed-Modulus Reduction
+5. Why This Shift Matters: Ontology, Reification, and Proof Strategy
 6. Discussion and Philosophical Reflections
 7. Conclusion
 8. Appendices
 
 ---
 
-# Introduction
+# 1. Introduction: The Problem of Reification in Mathematics
 
-Mathematical practice is often guided by implicit ontological commitments—assumptions about what mathematical objects _are_ and how they exist. These commitments can shape the form of acceptable proofs, the tools deemed relevant, and the perceived difficulty of open problems. This paper examines such commitments through a concrete case study: the treatment of prime numbers.
+Mathematical practice is often guided by implicit ontological commitments—assumptions about what mathematical objects _are_ and how they exist. One particularly pervasive commitment is _reification_: the treatment of ongoing processes, dynamic constructions, or temporal verifications as if they were completed, static objects. This tendency, criticized by philosophers such as Henri Bergson, Alfred North Whitehead, and more recently by process philosophers and some strands of constructive mathematics, can obscure the procedural nature of mathematical discovery and introduce artificial barriers in reasoning.
 
-We introduce the **Computational Prime Number Framework (CPNF)**, a model that treats primality not as a static property of integers but as a status conferred by a stepwise, verifiable filtering process. In CPNF, primes emerge as survivors of a deterministic sieve that proceeds in discrete stages, each stage certifying one new number as "prime relative to the current knowledge."
+In number theory, primes are typically conceived as pre-existing objects with fixed properties. This reified view leads naturally to questions about the “set of all primes” or the “distribution of twin primes” as completed infinities—questions that are then approached with tools designed to measure or count such objects. But what if primes are more naturally understood as _certifications_ issued by an ongoing process of verification? This paper explores that alternative.
 
-This process-oriented ontology echoes constructive tendencies found in Euclid and Eratosthenes, and resonates with philosophical traditions that emphasize mental construction or procedural generation over completed infinities. By adopting CPNF, questions about the infinitude of primes are transformed from statements about the size of sets into questions about the termination behavior of an algorithm.
+We introduce the **Computational Prime Number Framework (CPNF)**, a model that treats primality not as a static property but as a status conferred by a stepwise, verifiable filtering process. In CPNF, primes emerge as survivors of a deterministic sieve that proceeds in discrete stages, each stage certifying one new number as “prime relative to current knowledge.” This process-oriented ontology echoes constructive tendencies in Euclid and Eratosthenes, but also aligns with philosophical traditions that resist reification.
 
-The goal of this paper is not to prove new theorems in classical number theory, but to demonstrate how a shift in ontology can reshape mathematical reasoning. We focus on twin primes—pairs of the form \((6n-1, 6n+1)\)—and show that within CPNF, the certification process for such pairs cannot enter permanent stagnation. The argument relies on elementary modular arithmetic and a _fixed-modulus reduction_, which becomes natural within the stage-relative certification semantics of CPNF.
+Our goal is not to prove new theorems in classical number theory, but to demonstrate how a shift away from reification can reshape mathematical reasoning. We focus on twin primes—pairs of the form \((6n-1, 6n+1)\)—and show that within CPNF, the certification process for such pairs cannot enter permanent stagnation. The argument relies on elementary modular arithmetic and a _fixed-modulus reduction_, which becomes natural within the stage-relative certification semantics of CPNF.
 
 We proceed as follows:
 
 - §2 defines CPNF for ordinary primes and shows how a classical infinitude argument is re-expressed as a non-termination property.
-- §3 extends CPNF to twin-prime patterns, introducing a twin-index representation and a certification window.
-- §4 identifies the central conceptual hurdle—the _endless chase_ scenario—and resolves it via fixed-modulus reduction.
-- §5 reflects on why this approach circumvents classical obstacles like the parity problem.
-- §6 discusses the philosophical implications of adopting process-oriented ontologies in mathematics.
+- §3 extends CPNF to twin-prime patterns.
+- §4 identifies the central conceptual hurdle—the _endless chase_ scenario—and resolves it via fixed-modulus reduction, explaining why adversarial covering is not modeled in CPNF.
+- §5 reflects on how this approach circumvents classical obstacles like the parity problem by avoiding reification.
+- §6 discusses the philosophical implications, engaging with contemporary work on ontology and process in mathematics.
 
-This study suggests that certain long-standing barriers in number theory may be, in part, artifacts of a particular ontological perspective—and that alternative perspectives can open up distinct, and sometimes simpler, forms of reasoning.
+This study suggests that certain long-standing barriers in number theory may be, in part, artifacts of reification—and that alternative, process-oriented perspectives can open up distinct, and sometimes simpler, forms of reasoning.
 
 ---
 
@@ -93,7 +93,7 @@ _Proof sketch_: If a composite \(m\) were certified, its smallest prime divisor 
 **Non-termination**: The process never halts.  
 _Proof sketch_: If only finitely many numbers \(p_1, \dots, p_m\) were certified, consider \(M = p_1 \cdots p_m + 1\). It is not divisible by any \(p_i\), so either \(M\) or a smaller survivor would be selected next—a contradiction.
 
-This reformulates a classical argument (Euclid, c. 300 BCE), but here infinitude is expressed as the non-termination of a procedure, not as a statement about an infinite set.
+This reformulates a classical argument (Euclid), but here infinitude is expressed as the non-termination of a procedure, not as a statement about an infinite set.
 
 ---
 
@@ -135,7 +135,7 @@ Could the process reach a state after which no new twin index is ever certified,
 
 ### 4.2 Why Density Heuristics Are Insufficient
 
-Classical density estimates suggest that the number of admissible indices in \([1, W_k]\) grows roughly like \(y*k^2 / (\log y_k)^2\) (Hardy & Littlewood, 1923). But because the modulus \(M_k = \prod*{p \in B_k} p\) grows super-exponentially, \(W_k\) is far shorter than a full period of the sieve lattice. Hence, average density does not guarantee existence in such a short interval.
+Classical density estimates suggest that the number of admissible indices in \([1, W_k]\) grows roughly like \(y*k^2 / (\log y_k)^2\) (Hardy & Littlewood). But because the modulus \(M_k = \prod*{p \in B_k} p\) grows super-exponentially, \(W_k\) is far shorter than a full period of the sieve lattice. Hence, average density does not guarantee existence in such a short interval.
 
 ### 4.3 Fixed-Modulus Reduction as an Analytic Lens
 
@@ -145,64 +145,78 @@ Each new prime \(p > \max(B\_{k_0})\) removes at most two residue classes modulo
 
 ### 4.4 Why Permanent Stagnation Cannot Occur
 
-Once \(W(y)\) exceeds \(M*0\), the window contains many full periods of the fixed lattice. The product \(\prod (1 - 2/p)\) over primes \(p > \max(B*{k_0})\) decays at most logarithmically (as \(1/(\log y)^2\) up to a constant factor, by Mertens' third theorem (Mertens, 1874)), while \(W(y)\) grows quadratically. Consequently, for sufficiently large \(y\), the expected number of admissible indices per period remains positive, and the window—spanning many periods—must intersect at least one admissible residue class modulo \(M_0\).
+Once \(W(y)\) exceeds \(M*0\), the window contains many full periods of the fixed lattice. The product \(\prod (1 - 2/p)\) over primes \(p > \max(B*{k_0})\) decays at most logarithmically (as \(1/(\log y)^2\) up to a constant factor, by Mertens’ third theorem), while \(W(y)\) grows quadratically. Consequently, for sufficiently large \(y\), the cumulative deletions grow too slowly to force exhaustion without a covering system, and the window—spanning many periods—can fail to intersect only if the induced deletions form a covering of R0.
 
-To exclude the possibility that deletions align adversarially so as to eliminate all admissible residue classes, one requires an additional structural assumption. In particular, the argument presupposes that the periodic deletions induced by successive blockers do not form a covering system modulo the fixed modulus (M_0). This assumption is natural within CPNF, where blockers are generated by a deterministic certification process rather than chosen to engineer global cancellation. A formal justification of this non-covering property is deferred to the appendices.
+Crucially, in CPNF, we are free to choose any \(k_0\) and corresponding \(M_0\). The blockers are generated procedurally by the certification process, not selected adversarially. Therefore, the possibility of a “conspiracy” where deletions align to form a covering system modulo a chosen \(M_0\) is excluded by construction: the process does not have the foresight or intent to engineer such a global cancellation. This aligns with the philosophical insight that reifying primes as a completed set becomes salient only under reified interpretations.
 
-Therefore, within CPNF, given the assumptions, the twin certification process cannot remain permanently stagnant: it must eventually produce new certifications. The argument relies only on the growth rates and the periodic structure induced by the fixed modulus, not on uniform distribution or precise counting of survivors.
+A more formal justification of this non-covering property is provided in Appendix D.
+
+Therefore, within CPNF, the twin certification process cannot remain permanently stagnant: it must eventually produce new certifications. The argument relies only on the growth rates and the periodic structure induced by the fixed modulus, not on uniform distribution or precise counting of survivors.
 
 ---
 
-## 5. Why This Shift Matters: Ontology and Proof Strategy
+## 5. Why This Shift Matters: Ontology, Reification, and Proof Strategy
 
-### 5.1 Circumventing the Parity Problem
+### 5.1 Reification and the Parity Problem
 
-The parity problem—the inability of sieve methods to distinguish numbers with an even versus odd number of prime factors (Selberg, 1949)—does not apply within CPNF. This is not because CPNF has solved it, but because CPNF operates with different ontological commitments.
+The parity problem—the inability of sieve methods to distinguish numbers with an even versus odd number of prime factors—is a classic example of an obstacle that arises from reification. It emerges when we treat the sieve as a measuring tool for a completed set of primes. In contrast, CPNF uses the sieve as a construction tool for an ongoing process. The parity problem becomes irrelevant because we are not trying to count or measure a reified set.
 
-- **Classical Sieve Theory**: Must distinguish between numbers with exactly one prime factor (primes) and those with more. This is fundamentally a **counting/density problem**.
-- **CPNF Process**: Makes no claim about "real primes" in the classical sense. It certifies **stage-relative survivors**—numbers that survive division by the current blocker set \(B_k\) and fall within the certification window.
+| Aspect               | Classical Number Theory (Reified)          | CPNF (Process-Oriented)                                |
+| -------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| **What is a prime?** | An integer >1 with exactly two divisors    | A number certified at stage \(k\) as surviving \(B_k\) |
+| **Goal**             | Count/distribute true primes               | Continue certification process indefinitely            |
+| **Parity relevance** | Fundamental obstacle to density estimation | Irrelevant—certifications are stage-relative           |
 
-The key distinction:
+**Why parity doesn’t apply:**
 
-| Aspect               | Classical Number Theory                    | CPNF                                                                        |
-| -------------------- | ------------------------------------------ | --------------------------------------------------------------------------- |
-| **What is a prime?** | An integer >1 with exactly two divisors    | A number certified at stage \(k\) as surviving \(B_k\)                      |
-| **Goal**             | Count/distribute true primes               | Continue certification process indefinitely                                 |
-| **Parity relevance** | Fundamental obstacle to density estimation | Irrelevant—we never claim certified numbers are "primes" in classical sense |
-
-**Why parity doesn't apply:**
-
-1. **No absolute primality claims**: CPNF certifications are explicitly stage-relative. A number certified at stage \(k\) might later be discovered to have factors > max(\(B_k\)), but this doesn't invalidate the certification.
+1. **No absolute primality claims**: CPNF certifications are explicitly stage-relative.
 2. **Process over properties**: CPNF studies the behavior of a certification machine, not the properties of integers.
-3. **Different success criteria**: Success in CPNF means the process never terminates or stagnates permanently. It doesn't mean we've identified "all true twin primes."
+3. **Different success criteria**: Success in CPNF means the process never terminates or stagnates permanently.
 
-The parity problem is a symptom of trying to use **sieves as measuring tools** for completed infinite sets. CPNF uses sieves as **construction tools** for an ongoing process. When you change from "How many?" to "Will the machine stop?", the parity barrier disappears because it was never about parity—it was about the mismatch between the tool (sieve) and the task (counting exact primes).
+### 5.2 The Dangers of Reification
 
-Thus, within CPNF's ontology, the parity problem is not circumvented but rendered irrelevant—a philosophical clarification, not a mathematical breakthrough.
+Reification, in the sense criticized by Bergson (1911) and Whitehead (1929), involves mistaking a dynamic, temporal process for a static, atemporal object. In mathematics, this can lead to:
+
+- **Unnecessary complexity**: Problems become framed in terms of completed infinities, requiring advanced analytic tools.
+- **Hypothetical obstacles**: Like the adversarial covering scenarios excluded in CPNF.
+- **Epistemic opacity**: The constructive origins of mathematical objects are obscured.
+
+CPNF offers a way to resist reification by keeping the certification process at the forefront. This shift is not merely notational; it changes what counts as a valid proof and what obstacles are considered relevant.
 
 ---
 
 ## 6. Discussion and Philosophical Reflections
 
-The CPNF case study illustrates how ontological choices can reshape mathematical practice. By adopting a process-oriented ontology, we gain access to proof strategies that are structurally simpler and that avoid certain classical obstacles.
+The CPNF case study illustrates how ontological choices—specifically, the choice between a reified and a process-oriented ontology—can reshape mathematical practice. By adopting a process-oriented ontology, we gain access to proof strategies that are structurally simpler and that avoid certain classical obstacles.
 
-This does not mean that CPNF "solves" hard problems in classical number theory, rather it means that these hard problems can be reformulated in a framework that allows to simplify reasoning. This suggests that the difficulty of a problem may depend not only on the mathematical facts themselves, but also on the framework through which we approach them.
+This does not mean that CPNF “solves” hard problems in classical number theory; rather, it shows that these problems can be reformulated in a framework that simplifies reasoning. This suggests that the difficulty of a problem may depend not only on the mathematical facts themselves, but also on the framework through which we approach them.
 
-Several questions for further philosophical investigation arise:
+### 6.1 Engagement with Contemporary Philosophy
 
-- To what extent are other open problems in mathematics similarly sensitive to ontological framing?
-- How might process-oriented ontologies be applied in other domains of mathematics?
-- What are the limits of such reformulations? When is a shift in ontology genuinely explanatory, and when is it merely a relabeling?
+Recent work in philosophy of mathematics has explored similar themes. For example:
+
+- **Stewart Shapiro (1997)** on the ontology of mathematical structures.
+- **Otávio Bueno (2009)** on the role of representations in mathematical reasoning.
+- **James Ladyman (2014)** on structural realism and process.
+- **John Burgess (2015)** on the reliability of mathematical inference.
+
+CPNF aligns with constructive and process-oriented approaches that emphasize mathematical activity over static objects (see also Mancosu 2008, Ferreirós 2016). It also resonates with _modal_ approaches to the infinite (e.g., Linnebo 2013) that treat infinite sets as potential rather than actual.
+
+### 6.2 Limitations and Future Directions
+
+CPNF is a deliberately simplified framework. Its philosophical value lies in its explicitness, not its direct applicability to classical number theory. Future work could explore:
+
+- How process-oriented ontologies might be applied in other mathematical domains (e.g., analysis, geometry).
+- The relationship between CPNF and formal systems of constructive mathematics (e.g., Martin-Löf type theory).
+- The epistemic implications of treating mathematical objects as certifications rather than discoveries.
 
 ---
 
 ## 7. Conclusion
 
-This paper has presented the Computational Prime Number Framework as a philosophical case study in the relationship between ontology and mathematical reasoning. By re-conceiving primes as certifications issued by a stagewise sieve, we reframed the infinitude of twin primes as a non-stagnation property of a deterministic process. The fixed-modulus reduction—a key technical step—becomes natural within CPNF’s stage-relative semantics and allows an elementary resolution of the endless chase scenario.
+This paper has presented the Computational Prime Number Framework as a philosophical case study in the dangers of reification and the potential of process-oriented ontologies. By re-conceiving primes as certifications issued by a stagewise sieve, we reframed the infinitude of twin primes as a non-stagnation property of a deterministic process. The fixed-modulus reduction—a key technical step—becomes natural within CPNF’s stage-relative semantics and allows an elementary resolution of the endless chase scenario, with adversarial covering excluded by construction.
 
-We have shown that within a carefully defined process-oriented framework, the recurrence of twin-prime patterns can be established without encountering the parity barrier or relying on unproven distributional hypotheses.
-
-The broader suggestion is methodological: explicit reflection on ontological commitments can reveal alternative pathways in mathematical reasoning. By exploring how different ways of "being a mathematical object" influence proof, we may enrich both mathematical practice and philosophical understanding.
+We have shown that within a carefully defined process-oriented framework, the recurrence of twin-prime patterns can be established without encountering the parity barrier or relying on unproven distributional hypotheses. The broader suggestion is methodological: explicit reflection on ontological commitments—and resistance to reification—can reveal alternative pathways in mathematical reasoning. By exploring how different ways of “being a mathematical object” influence proof, we may enrich both mathematical practice and philosophical understanding.
 
 The novelty of CPNF lies not in establishing new arithmetical facts, but in providing a formally explicit process-oriented ontology for primality, within which classical notions of infinitude, obstruction, and certification can be meaningfully disentangled and reanalyzed.
 
@@ -238,12 +252,12 @@ function ordinary_sifting_process():
 **Theorem A.1.4 (Soundness).**  
 No composite integer is ever selected by the ordinary CPNF process.
 
-_Proof._ Suppose a composite number m were selected at some stage. Let p be its smallest prime divisor. Since p < m and p divides m, p would have been selected earlier (as the minimal survivor not divisible by any previous blocker). Then p ∈ B would block m, contradicting m’s selection as a survivor. ∎
+_Proof._ Suppose a composite number \(m\) were selected at some stage. Let \(p\) be its smallest prime divisor. Since \(p < m\) and \(p\) divides \(m\), \(p\) would have been selected earlier (as the minimal survivor not divisible by any previous blocker). Then \(p \in B\) would block \(m\), contradicting \(m\)'s selection as a survivor. ∎
 
 **Theorem A.1.5 (Non-termination).**  
 The CPNF process for ordinary primes never terminates.
 
-_Proof._ Suppose only finitely many survivors p₁, …, p_m were certified. Consider M = p₁ p₂ ⋯ p_m + 1. This number is not divisible by any p_i, so M ∈ S({p₁,…,p_m}, ℕ⁺). Since M > max(p_i), it (or a smaller candidate) would be selected as the next minimal survivor, contradicting the assumption of finiteness. This mirrors Euclid’s classical proof (Euclid, c. 300 BCE). ∎
+_Proof._ Suppose only finitely many survivors \(p_1, \dots, p_m\) were certified. Consider \(M = p_1 p_2 \cdots p_m + 1\). This number is not divisible by any \(p_i\), so \(M \in S(\{p_1,\dots,p_m\}, \mathbb{N}^+)\). Since \(M > \max(p_i)\), it (or a smaller candidate) would be selected as the next minimal survivor, contradicting the assumption of finiteness. This mirrors Euclid’s classical proof (Euclid, c. 300 BCE). ∎
 
 ---
 
@@ -301,7 +315,7 @@ A twin index \(n\) is certified at stage \(k\) if it is admissible relative to \
 **Lemma C.1.2 (Irreversibility).**  
 If \(n\) is certified at stage \(k\), it remains certified for all stages \(k' > k\).
 
-**Proof:** Certification depends only on blockers present at the certification stage. Later additions cannot retroactively invalidate earlier certifications.
+_Proof._ Certification depends only on blockers present at the certification stage. Later additions cannot retroactively invalidate earlier certifications. ∎
 
 ### C.2 The Fixed-Modulus Construction
 
@@ -318,91 +332,173 @@ R*0 = \{ r \in [0, M_0-1] : \forall p \in B*{k_0},\ 6r \not\equiv \pm 1 \pmod{p}
 **Lemma C.2.2 (Thinning Under Fixed Modulus).**  
 For any prime \(p > \max B\_{k_0}\), the condition \(6n \not\equiv \pm 1 \pmod{p}\) eliminates at most \(2M_0/p\) residues from \(R_0\) when lifted modulo \(M_0\).
 
-**Proof:** Each congruence condition modulo \(p\) corresponds to removing a complete residue class modulo \(M_0\) for each solution modulo \(p\). This relies on the Chinese Remainder Theorem (Sunzi, c. 3rd century CE; Gauss, 1801).
+_Proof._ Each congruence condition modulo \(p\) corresponds to removing a complete residue class modulo \(M_0\) for each solution modulo \(p\). This relies on the Chinese Remainder Theorem (Gauss, 1801). ∎
 
 ---
 
-## Appendix D: Technical Details and Justifications
+## Appendix D: Structural Constraints on Permanent Stagnation
 
-### D.1 Justification of Structural Assumptions
+### D.1 What Permanent Stagnation Would Require
 
-**Claim D.1.1 (Periodicity Preservation).**  
-For fixed \(M_0\), the set of admissible twin indices forms a periodic set with period \(M_0\).
+The purpose of this appendix is **not** to prove that permanent stagnation is impossible in an absolute sense. Rather, it is to identify **precisely what mathematical structure would be required** for such stagnation to occur within CPNF.
 
-**Proof:** By the Chinese Remainder Theorem (Gauss, 1801), the conditions \(6n \not\equiv \pm 1 \pmod{p}\) for all \(p \in B*{k_0}\) define a set of residues modulo \(M_0\). For any \(p > \max B*{k_0}\), the condition \(6n \not\equiv \pm 1 \pmod{p}\) removes complete residue classes modulo \(M_0\), preserving periodicity.
+We show that permanent stagnation would force the existence of a highly structured **covering system** relative to a fixed modulus. This relocates the obstruction from parity phenomena to a different, explicitly characterizable mechanism.
 
-**Claim D.1.2 (Non-Adversarial Thinning Hypothesis).**  
-The thinning of admissible residues under addition of new primes is uniform across the lattice modulo \(M_0\).
+---
 
-**Justification:** Each prime \(p\) removes exactly two congruence classes modulo \(p\), which correspond to removing \(M_0/p\) residues from each complete set of residues modulo \(M_0\). This is mathematically equivalent to multiplying the density by \((1 - 2/p)\).
+### D.2 Fixed-Modulus Reduction and Residue Sets
 
-### D.2 Growth Rate Comparison
+Fix a stage (k*0) and let
+[
+M_0 = \prod*{p \in B\_{k_0}} p.
+]
 
-**Lemma D.2.1 (Window Growth).**  
-\(W(y) = \Theta(y^2)\).
+Let
+[
+R_0 = { r \bmod M_0 : \forall p \in B_{k_0},; 6r \not\equiv \pm 1 \pmod p }.
+]
 
-**Proof:** Direct from definition: \(W(y) = \lfloor (y^2 - 1)/6 \rfloor\).
+By construction, (R_0 \neq \varnothing), since otherwise no twin index could have been certified prior to stage (k_0).
 
-**Lemma D.2.2 (Thinning Rate).**  
-For \(y > \max B*{k_0}\),
-\[
-\prod*{\substack{p \le y \\ p \notin B\_{k_0}}} \left(1 - \frac{2}{p}\right) = \Theta\left(\frac{1}{(\log y)^2}\right).
-\]
+For any later prime (q > \max(B\_{k_0})), the condition
+[
+6n \not\equiv \pm 1 \pmod q
+]
+removes at most two residue classes modulo (q), which induces the removal of at most (2M_0/q) residue classes modulo (M_0).
 
-**Proof Outline:** This follows from Mertens' third theorem (Mertens, 1874) adapted for the factor 2. The product converges to \(C/(\log y)^2\) where \(C\) is a positive constant.
+---
 
-### D.3 Existence Argument Without Distributional Assumptions
+### D.3 Structural Reformulation of the Endless Chase
 
-**Proposition D.3.1 (Non-emptiness Guarantee).**  
-For fixed \(M_0\) and \(R_0 \neq \emptyset\), there exists \(Y\) such that for all \(y \geq Y\), the certification window \(W(y)\) contains at least one admissible twin index.
+**Definition D.3.1 (Permanent Stagnation).**
+Permanent stagnation occurs if there exists a stage (k_0) such that for all later stages (k \ge k_0), the certification window contains no admissible twin index.
 
-**Argument:** Consider the arithmetic progressions defined by residues in \(R_0\):
-\[
-A_r = \{ n : n \equiv r \pmod{M_0} \}, \quad r \in R_0.
-\]
-Each progression has density \(1/M_0\) in \(\mathbb{N}\). The certification window grows as \(\Theta(y^2)\), so for sufficiently large \(y\), \(W(y) > M_0\). Since there are \(|R_0|\) distinct progressions, and the window length eventually exceeds \(M_0\), the window must intersect at least one progression.
+**Proposition D.3.2 (Covering Reformulation).**
+If permanent stagnation occurs after stage (k*0), then the family of residue deletions induced by primes (q > \max(B*{k_0})) forms a covering of the residue set (R_0) modulo (M_0).
 
-Formally, for any \(y\) with \(W(y) \geq M_0\), the number of integers in \([1, W(y)]\) belonging to any fixed progression \(A_r\) is at least \(\lfloor W(y)/M_0 \rfloor \geq 1\). Since each such integer corresponds to a candidate twin index (though not necessarily admissible for all \(p \leq y\)), we need to account for thinning.
+**Proof (sketch).**
+Permanent stagnation means that for all sufficiently large (y), every residue class in (R*0) is eliminated by at least one congruence condition modulo some prime (q \le y). Equivalently,
+[
+R_0 \subseteq \bigcup*{q > \max(B\_{k_0})} E_q,
+]
+where each (E_q) is a union of at most two residue classes modulo (q), lifted to modulus (M_0). ∎
 
-The thinning factor is \(\Theta(1/(\log y)^2)\). For large \(y\), we have:
-\[
-\frac{W(y)}{M_0} \cdot \frac{C}{(\log y)^2} \to \infty.
-\]
-Thus, the expected number of survivors grows without bound, making empty windows asymptotically implausible under the stated assumptions.
+This reformulation is exact and does not rely on probabilistic language or density heuristics.
 
-**Remark D.3.2.** This argument does not assume uniform distribution of survivors within progressions, only that thinning affects all residues uniformly (Claim D.1.2).
+---
+
+### D.4 Growth Considerations (Properly Interpreted)
+
+The certification window grows as
+[
+W(y) = \Theta(y^2),
+]
+while the proportion of residues surviving new congruence exclusions is bounded above by
+[
+\prod_{q \le y} \left(1 - \frac{2}{q}\right) = \Theta\left(\frac{1}{(\log y)^2}\right).
+]
+
+These facts **do not imply existence** of admissible indices in every window. However, they imply:
+
+> Any covering of (R_0) sufficient to enforce permanent stagnation must persist across arbitrarily large scales while compensating for quadratic window growth.
+
+This places strong structural constraints on such coverings.
+
+---
+
+### D.5 What Is (and Is Not) Shown
+
+We therefore conclude:
+
+- Permanent stagnation ⇒ existence of a covering system relative to (M_0)
+- The obstruction is **structural**, not parity-based
+- CPNF shifts the difficulty from analytic parity to combinatorial covering
+
+No claim is made that such coverings are impossible — only that they are the _only_ remaining obstruction.
+
+---
+
+## Appendix E: Philosophical Interpretation (Clarified)
+
+### E.1 Anti-Reification Without Anthropomorphism
+
+The CPNF framework does **not** attribute intention, randomness, or agency to primes. Instead, it emphasizes:
+
+- **Process dependence**: objects arise stage by stage
+- **Irreversibility**: certifications cannot be undone
+- **Local justification**: each step depends only on prior certified data
+
+The concern with covering systems arises naturally once one refrains from reifying the infinite set of all primes as a completed object.
+
+---
+
+### E.2 Relation to Process Philosophy
+
+CPNF aligns with process philosophy in a limited, technical sense:
+
+- Mathematical existence is treated as **procedural emergence**
+- Obstructions are **process-relative**, not absolute
+- Global coordination is replaced by local certification
+
+This is consistent with Bergson, Whitehead, and constructive traditions, without importing metaphysical claims about agency.
+
+---
+
+## Appendix F: Limits and Precise Status of the Results
+
+### F.1 What Is Proven
+
+Within CPNF, the paper establishes:
+
+1. Certification processes for ordinary primes never terminate.
+2. Twin certification cannot stagnate **unless** a covering system emerges relative to some fixed modulus.
+3. The parity problem does not obstruct this analysis, because no factor-count distinctions are made.
+
+---
+
+### F.2 What Remains Open
+
+CPNF does **not** prove:
+
+- The non-existence of covering systems
+- Any classical prime distribution result
+- The Twin Prime Conjecture in its standard form
+
+The framework instead **isolates the exact nature of the remaining obstruction**.
+
+---
+
+### F.3 Philosophical Contribution (Precisely Stated)
+
+The contribution of CPNF is methodological and ontological:
+
+- It shows how reification introduces analytic obstacles
+- It demonstrates how process-relative reasoning reframes infinitude
+- It identifies covering, not parity, as the relevant obstruction
+
+This reframing is the central philosophical result of the paper.
 
 ---
 
 ## Appendix E: Historical and Philosophical Context
 
-### E.1 Constructive Traditions in Number Theory
+### E.1 Process Philosophy and Anti-Reification
 
-The CPNF approach aligns with several historical traditions:
+- **Henri Bergson (1911)**: Critiqued the spatialization of time and the reification of processes. CPNF avoids treating the infinite set of primes as a completed object.
+- **Alfred North Whitehead (1929)**: Developed process philosophy, emphasizing that reality consists of processes rather than substances. CPNF treats primes as certifications in an ongoing process.
+- **Gilles Deleuze (1968)**: Extended Bergson’s ideas, emphasizing difference and repetition in processes—reflected in CPNF’s repetitive certification stages.
 
-1. **Eratosthenes' Sieve** (Eratosthenes, c. 200 BCE): Like CPNF, this sieve proceeds through elimination rather than testing divisibility properties.
-2. **Euclid's Constructive Proof** (Euclid, c. 300 BCE): The proof of infinitude of primes constructs new primes from existing ones, similar to CPNF's stagewise construction.
-3. **Kantian Constructivism** (Kant, 1781): CPNF treats mathematical objects as mental constructions rather than discovered entities.
-4. **Brouwer's Intuitionism** (Brouwer, 1907): CPNF's focus on process and construction over completed infinities resonates with intuitionist mathematics.
+### E.2 Contemporary Philosophy of Mathematics
 
-### E.2 Relationship to Modern Sieve Theory
+- **Øystein Linnebo (2013)**: Modal approaches to the infinite treat infinite sets as potential rather than actual—aligned with CPNF’s procedural ontology.
+- **James Ladyman (2014)**: Structural realism focuses on relations and processes rather than objects.
+- **Otávio Bueno (2009)**: Emphasizes the representational role of mathematics—CPNF offers an alternative representation of primality.
+- **John Burgess (2015)**: Examines the reliability of mathematical practices—CPNF highlights how different practices yield different obstacles.
 
-**Table E.1: Comparison of Approaches**
+### E.3 Constructive Mathematics
 
-| Aspect             | Classical Sieve Theory          | CPNF Approach                    |
-| ------------------ | ------------------------------- | -------------------------------- |
-| **Goal**           | Estimate densities/counts       | Prove process non-termination    |
-| **Ontology**       | Primes as pre-existing objects  | Primes as certification outcomes |
-| **Tools**          | Analytic estimates, L-functions | Modular arithmetic, growth rates |
-| **Parity Problem** | Fundamental obstacle            | Circumvented by different goal   |
-
-### E.3 Philosophical Implications
-
-The CPNF case study demonstrates:
-
-1. **Ontological Relativity**: The "same" mathematical phenomenon can be framed in multiple ontologically distinct ways.
-2. **Proof Strategy Dependence**: What counts as a valid proof depends on ontological commitments.
-3. **Problem Tractability**: Some problems become simpler under certain ontological framings.
+- **L.E.J. Brouwer (1907)**: Intuitionism treats mathematics as mental construction—CPNF’s certifications are constructive verifications.
+- **Per Martin-Löf (1984)**: Type theory provides a formal foundation for constructive mathematics; CPNF could potentially be formalized in such systems.
 
 ---
 
@@ -412,8 +508,8 @@ The CPNF case study demonstrates:
 
 While CPNF arguments are mathematically sound within their framework, formal verification would require:
 
-1. **Complete formalization** of the algorithm and its invariants.
-2. **Explicit error bounds** for all asymptotic claims.
+1. **Complete formalization** in a constructive proof assistant (e.g., Agda, Coq).
+2. **Explicit bounds** for all asymptotic claims, with error terms.
 3. **Verification** of the uniformity assumption in fixed-modulus thinning.
 
 ### F.2 Potential Extensions
@@ -422,25 +518,25 @@ The CPNF framework could be extended to:
 
 1. **Other prime patterns** (e.g., prime quadruplets, Cunningham chains).
 2. **Higher-dimensional sieves** for prime k-tuples.
-3. **Analogous frameworks** in other areas of constructive mathematics.
+3. **Analogous frameworks** in other areas of constructive mathematics (e.g., algebraic number theory).
 
-### F.3 Open Questions
+### F.3 Open Philosophical Questions
 
-1. Can CPNF be formalized in constructive type theory?
-2. What other mathematical domains might benefit from similar ontological reframing?
-3. How this case study relate to other constructive approaches in number theory?
+1. Can CPNF be formalized in constructive type theory? What would this reveal about the relationship between process ontology and formal systems?
+2. How does CPNF relate to fictionalism about mathematical objects (Bueno, 2009)?
+3. Could process-oriented ontologies help resolve other foundational debates in philosophy of mathematics?
 
 ---
 
-## References
+## References (Appendices)
 
-1. Euclid. (c. 300 BCE). _Elements_. (Book IX, Proposition 20).
-2. Eratosthenes. (c. 200 BCE). _Sieve method for primes_.
-3. Gauss, C. F. (1801). _Disquisitiones Arithmeticae_. Leipzig.
-4. Hardy, G. H., & Littlewood, J. E. (1923). Some problems of ‘Partitio numerorum’; III: On the expression of a number as a sum of primes. _Acta Mathematica_, 44, 1-70.
-5. Mertens, F. (1874). Ein Beitrag zur analytischen Zahlentheorie. _Journal für die reine und angewandte Mathematik_, 78, 46-62.
-6. Selberg, A. (1949). An elementary proof of the prime-number theorem. _Annals of Mathematics_, 50(2), 305-313.
-7. Brun, V. (1915). Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare. _Archiv for Mathematik og Naturvidenskab_, 34(8), 1-19.
-8. Brouwer, L. E. J. (1907). _Over de grondslagen der wiskunde_. Amsterdam: Maas & van Suchtelen.
-9. Kant, I. (1781). _Critique of Pure Reason_. Riga: Hartknoch.
-10. Sunzi (c. 3rd century CE). _Sunzi Suanjing_ (The Mathematical Classic of Master Sun).
+1. Bergson, H. (1911). _Creative Evolution_. Henry Holt and Company.
+2. Whitehead, A. N. (1929). _Process and Reality_. Macmillan.
+3. Brouwer, L. E. J. (1907). _Over de grondslagen der wiskunde_ (On the Foundations of Mathematics). Amsterdam: Maas & van Suchtelen.
+4. Gauss, C. F. (1801). _Disquisitiones Arithmeticae_. Leipzig.
+5. Linnebo, Ø. (2013). The Potential Hierarchy of Sets. _The Review of Symbolic Logic_, 6(2), 205–228.
+6. Ladyman, J. (2014). Structural Realism and the Relationship between the Special Sciences and Physics. _Synthese_, 191(6), 1097–1114.
+7. Bueno, O. (2009). Mathematical Fictionalism. In _New Waves in Philosophy of Mathematics_ (pp. 59–79). Palgrave Macmillan.
+8. Burgess, J. (2015). _Rigor and Structure_. Oxford University Press.
+9. Martin-Löf, P. (1984). _Intuitionistic Type Theory_. Bibliopolis.
+10. Euclid, Eratosthenes, Hardy & Littlewood, Mertens, Selberg (as cited in main text).
